@@ -9,8 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'CardStackCollectionViewLayout'
   s.version          = '0.1.0'
-  s.summary          = `CardStackCollectionViewLayout provides UICollectionViewLayout`  \
-                        `using a stacked card metaphore'
+  s.summary          = 'UICollectionViewLayout as a stack of cards.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,11 +17,7 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = `CardStackCollectionViewLayout provides UICollectionViewLayout`              \
-                        `using a stacked card metaphore, similar to Apple Wallet\'s Card view. The` \
-                        `stack may be expanded (fanned-out) or displayed normally as a stack of`    \
-                        `cards with a small portion of the bottom of each card visible. Cell/card`  \
-                        `insert and delete transitions are provided`
+  s.description      = 'CardStackCollectionViewLayout provides UICollectionViewLayout using a stacked card metaphore, similar to the Apple Wallet Card view'
 
   s.homepage         = 'https://github.com/cdstamper/CardStackCollectionViewLayout'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
