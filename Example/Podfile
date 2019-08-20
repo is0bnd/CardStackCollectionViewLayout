@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'CardStackCollectionViewLayout_Example' do
+  pod 'CardStackCollectionViewLayout', :path => '../'
+
+  target 'CardStackCollectionViewLayout_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
