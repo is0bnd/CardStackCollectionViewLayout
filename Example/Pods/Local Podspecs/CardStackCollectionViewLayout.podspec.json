@@ -1,0 +1,22 @@
+{
+  "name": "CardStackCollectionViewLayout",
+  "version": "0.1.0",
+  "summary": "A short description of CardStackCollectionViewLayout.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/cdstamper/CardStackCollectionViewLayout",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "cdstamper": "chris@cdstamper.co"
+  },
+  "source": {
+    "git": "https://github.com/cdstamper/CardStackCollectionViewLayout.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "CardStackCollectionViewLayout/Classes/**/*"
+}

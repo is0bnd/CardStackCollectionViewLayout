@@ -1,0 +1,16 @@
+PODS:
+  - CardStackCollectionViewLayout (0.1.0)
+
+DEPENDENCIES:
+  - CardStackCollectionViewLayout (from `../`)
+
+EXTERNAL SOURCES:
+  CardStackCollectionViewLayout:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CardStackCollectionViewLayout: b96457e94f61589d4307704ee02c4005f513593f
+
+PODFILE CHECKSUM: 044e985aa9e19304d929d35d01389e9db9f91219
+
+COCOAPODS: 1.7.5

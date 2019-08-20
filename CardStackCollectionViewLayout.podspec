@@ -17,16 +17,18 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+  s.description      = `CardStackCollectionViewLayout provides UICollectionViewLayout`              \
+                        `using a stacked card metaphore, similar to Apple Wallet\'s Card view. The` \
+                        `stack may be expanded (fanned-out) or displayed normally as a stack of`    \
+                        `cards with a small portion of the bottom of each card visible. Cell/card`  \
+                        `insert and delete transitions are provided`
 
   s.homepage         = 'https://github.com/cdstamper/CardStackCollectionViewLayout'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'cdstamper' => 'chris@cdstamper.co' }
   s.source           = { :git => 'https://github.com/cdstamper/CardStackCollectionViewLayout.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.social_media_url = 'https://twitter.com/cdstamper'
 
   s.ios.deployment_target = '8.0'
 
