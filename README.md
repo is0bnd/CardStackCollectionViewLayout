@@ -7,7 +7,7 @@ Cell/card insert and delete transitions are provided. They continue the card sta
 
 ## Example
 
-To run the example project, clone the repo, and run target CardStackCollectionViewLayout_Example
+To run the example project, clone the repo, and run `pod install`
 
 ## Requirements
 iOS 9+

@@ -9,7 +9,8 @@
 Pod::Spec.new do |s|
   s.name             = 'CardStackCollectionViewLayout'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of CardStackCollectionViewLayout.'
+  s.summary          = `CardStackCollectionViewLayout provides UICollectionViewLayout`  \
+                        `using a stacked card metaphore'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -24,7 +25,6 @@ Pod::Spec.new do |s|
                         `insert and delete transitions are provided`
 
   s.homepage         = 'https://github.com/cdstamper/CardStackCollectionViewLayout'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'cdstamper' => 'chris@cdstamper.co' }
   s.source           = { :git => 'https://github.com/cdstamper/CardStackCollectionViewLayout.git', :tag => s.version.to_s }
@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'CardStackCollectionViewLayout/Classes/**/*'
+  s.source_files = 'CardStackCollectionViewLayout/Sources/**/*'
   
   # s.resource_bundles = {
   #   'CardStackCollectionViewLayout' => ['CardStackCollectionViewLayout/Assets/*.png']
