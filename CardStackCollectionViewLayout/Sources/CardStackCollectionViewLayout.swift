@@ -63,7 +63,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
         }
         
         let width = collection.bounds.size.width
-        let height = contentHeight
+        let height = contentHeight * CGFloat(collection.numberOfItems(inSection: 0))
         return CGSize(width: width, height: height)
     }}
     
