@@ -32,18 +32,18 @@ public struct CardStackLayoutConfig {
     public let depthWidthOffset: CGFloat = 30
 }
 
-public enum CardStackLayoutState {
+@objc public enum CardStackLayoutState: Int {
     case normal
     case expanded
 }
 
-public protocol CardStackLayoutDelegate {
+@objc public protocol CardStackLayoutDelegate: class {
     var currentState: CardStackLayoutState { get }
 }
 
 open class CardStackCollectionViewLayout: UICollectionViewLayout {
     
-    public var delegate: CardStackLayoutDelegate?
+    @IBOutlet public var delegate: CardStackLayoutDelegate?
     public var config = CardStackLayoutConfig()
     
     var contentBounds = CGRect.zero
