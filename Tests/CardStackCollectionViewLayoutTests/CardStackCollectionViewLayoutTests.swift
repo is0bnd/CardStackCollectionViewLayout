@@ -6,7 +6,7 @@ final class CardStackCollectionViewLayoutTests: XCTestCase {
     func testExample() {
         let layout = CardStackCollectionViewLayout()
         let config = CardStackLayoutConfig()
-        let state = CardStackLayoutState.normal
+        let state = CardStackLayoutState.collapsed
         assert(true, "They can initialize")
     }
 

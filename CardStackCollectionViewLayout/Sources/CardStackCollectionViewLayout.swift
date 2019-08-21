@@ -36,7 +36,7 @@ public struct CardStackLayoutConfig {
 }
 
 @objc public enum CardStackLayoutState: Int {
-    case normal
+    case collapsed
     case expanded
 }
 
@@ -56,7 +56,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
     private var fullWidth: CGFloat { get { collectionView?.frame.size.width ?? UIScreen.main.bounds.width }}
     
     var state: CardStackLayoutState { get {
-        return delegate?.currentState ?? .normal
+        return delegate?.currentState ?? .collapsed
     }}
     
     override open var collectionViewContentSize: CGSize { get {
@@ -129,7 +129,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
         let widthDecreaseCutoff = 3
         let coefficent = min(index, widthDecreaseCutoff)
         var additionalHorizontalPadding: CGFloat = 0
-        if cardState == .normal {
+        if cardState == .collapsed {
             // NORMAL/COLLAPSED
             // 1...3 should gradually decrease width, aftward remain fixed. 0th remains full width.
             additionalHorizontalPadding = coefficent == 0 ? 0.0 : CGFloat(coefficent) * config.depthWidthOffset
@@ -146,12 +146,12 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
         // Card states adjustment
         switch cardState {
         case .expanded:
-            let limitedIndex = max(config.normalStackDepthLimit, index)
-            let val = (config.cardHeight * CGFloat(limitedIndex))
-            frame.origin.y = (config.verticalSpacing * CGFloat(limitedIndex)) + val
+            let val = (config.cardHeight * CGFloat(index))
+            frame.origin.y = (config.verticalSpacing * CGFloat(index)) + val
             
-        case .normal:
-            frame.origin.y = config.verticalSpacing + (config.cardPeekHeight * CGFloat(index))
+        case .collapsed:
+            let limitedIndex = max(config.normalStackDepthLimit, index)
+            frame.origin.y = config.verticalSpacing + (config.cardPeekHeight * CGFloat(limitedIndex))
         }
         
         return frame
