@@ -17,7 +17,7 @@ import UIKit
 
 public struct CardStackLayoutConfig {
     /// Fully-expanded height
-    public let cardHeight: CGFloat = 100
+    public let cardHeight: CGFloat = 130
     
     /// Card height when collapsed
     public let collapsedHeight: CGFloat = 50
@@ -27,7 +27,7 @@ public struct CardStackLayoutConfig {
     
     public let horizontalSpacing: CGFloat = 10
     public let verticalSpacing: CGFloat = 30
-
+    
     /// Card width offset (multiplied by position) when collapsed
     public let depthWidthOffset: CGFloat = 30
     
@@ -57,7 +57,9 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
     
     var state: CardStackLayoutState { get {
         return delegate?.currentState ?? .collapsed
-    }}
+        }}
+    
+    var lastRenderedState: CardStackLayoutState?
     
     override open var collectionViewContentSize: CGSize { get {
         
@@ -66,7 +68,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
         }
         
         let width = collection.bounds.size.width
-        let height = contentHeight * CGFloat(collection.numberOfItems(inSection: 0))
+        let height = contentHeight
         return CGSize(width: width, height: height)
     }}
     
@@ -79,23 +81,25 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
             return
         }
         
-        let kFractionToMove: Float = 0.0 // dragging translation
-        
-        contentHeight = state == .expanded ? 0.0 : config.collapsedHeight + CGFloat(kFractionToMove)
-
+        let kFractionToMove: Float = 0.0 // future dragging translation
+        contentHeight = CGFloat(kFractionToMove)
         cachedAttributes.removeAll()
-        contentBounds = CGRect(origin: .zero, size: collection.bounds.size)
 
         let qty = collection.numberOfItems(inSection: 0)
         for index in 0..<qty {
-              let layout = UICollectionViewLayoutAttributes(forCellWith: IndexPath(row: index, section: 0))
-              layout.frame = frameFor(index: index, cardState: state, translation: kFractionToMove)
-              if state == .expanded {
-                  contentHeight += CGFloat(config.verticalSpacing) + layout.frame.size.height
-              }
-              layout.zIndex = qty - index
-              layout.isHidden = false
-
+            let layout = UICollectionViewLayoutAttributes(forCellWith: IndexPath(row: index, section: 0))
+            layout.frame = frameFor(index: index, cardState: state, translation: kFractionToMove)
+            
+            // content height needs to be based on render At height not 'visual height' since we're stacking
+            if state == .expanded && index != 0 {
+                contentHeight =  layout.frame.origin.y + config.cardHeight + config.verticalSpacing
+            } else if state == .collapsed  {
+                contentHeight = layout.frame.origin.y + config.cardPeekHeight
+            }
+            
+            layout.zIndex = qty - index
+            layout.isHidden = state == .collapsed ? index > config.normalStackDepthLimit : false
+            
             cachedAttributes.append(layout)
         }
     }
@@ -110,7 +114,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
     
     // MARK: - Insert/Delete Transitions
     /// UIKit will automatically animate between these (appear/disappear) attributes, and the regular attributes.
-
+    
     /// APPEAR: Default animation is fine.
     
     /// DISAPPEAR: Animate offscreen to the right edge, with a bit of rotational transform
@@ -126,13 +130,12 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
     private func frameFor(index: Int, cardState: CardStackLayoutState, translation: Float) -> CGRect {
         
         // Card widths
-        let widthDecreaseCutoff = 3
-        let coefficent = min(index, widthDecreaseCutoff)
+        let coefficent = index //, config.normalStackDepthLimit)
         var additionalHorizontalPadding: CGFloat = 0
         if cardState == .collapsed {
             // NORMAL/COLLAPSED
             // 1...3 should gradually decrease width, aftward remain fixed. 0th remains full width.
-            additionalHorizontalPadding = coefficent == 0 ? 0.0 : CGFloat(coefficent) * config.depthWidthOffset
+            additionalHorizontalPadding = coefficent == 0 ? 0.0 : (CGFloat(coefficent) * config.depthWidthOffset)
         } else {
             // EXPANDED
             // card width should be consistent, but smaller than the 0th
@@ -140,20 +143,25 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
         }
         
         let origin = CGPoint(x: config.horizontalSpacing + (additionalHorizontalPadding / 2), y:0)
-        let width = fullWidth - (config.horizontalSpacing + config.horizontalSpacing) - additionalHorizontalPadding
+        let width = fullWidth - (config.horizontalSpacing + config.horizontalSpacing + additionalHorizontalPadding)
+
         var frame = CGRect(origin: origin, size: CGSize(width: width, height: config.cardHeight))
-       
-        // Card states adjustment
-        switch cardState {
-        case .expanded:
-            let val = (config.cardHeight * CGFloat(index))
-            frame.origin.y = (config.verticalSpacing * CGFloat(index)) + val
-            
-        case .collapsed:
-            let limitedIndex = max(config.normalStackDepthLimit, index)
-            frame.origin.y = config.verticalSpacing + (config.cardPeekHeight * CGFloat(limitedIndex))
+        
+        if index == 0 {
+            return frame
         }
         
+        // Apply index offsets, padding to the bottom of the cell if not 0th
+        switch cardState {
+        case .expanded:
+            let heights = (config.cardHeight * CGFloat(index))
+            let spaces = (config.verticalSpacing * CGFloat(index))
+            frame.origin.y = spaces + heights
+        case .collapsed:
+            let limitedIndex = min(config.normalStackDepthLimit, index)
+            frame.origin.y = config.cardPeekHeight * CGFloat(limitedIndex)
+        }
+
         return frame
     }
 }

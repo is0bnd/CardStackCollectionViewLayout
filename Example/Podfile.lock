@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  CardStackCollectionViewLayout: b96457e94f61589d4307704ee02c4005f513593f
+  CardStackCollectionViewLayout: eb23127f0225418dd7e40e7f4c9d41ba015ee35c
 
 PODFILE CHECKSUM: 044e985aa9e19304d929d35d01389e9db9f91219
 

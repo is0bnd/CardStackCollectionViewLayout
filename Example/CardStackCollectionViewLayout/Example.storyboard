@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FI1-rw-VCe">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,14 +11,14 @@
         <!--Example Collection View Controller-->
         <scene sceneID="oSt-5z-Hgb">
             <objects>
-                <collectionViewController storyboardIdentifier="Example" id="FI1-rw-VCe" customClass="ExampleCollectionViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="IU1-ws-nz6">
+                <collectionViewController storyboardIdentifier="Example" id="FI1-rw-VCe" customClass="ExampleCollectionViewController" customModule="CardStackCollectionViewLayout_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" id="IU1-ws-nz6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewLayout key="collectionViewLayout" id="ZS1-Mc-fTB" customClass="CardStackCollectionViewLayout" customModule="IIITech_Deliveries" customModuleProvider="target"/>
+                        <collectionViewLayout key="collectionViewLayout" id="CeO-0r-mt0" customClass="CardStackCollectionViewLayout" customModule="CardStackCollectionViewLayout"/>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="example" id="KWL-Ri-hSK" customClass="ExampleCollectionViewCell" customModule="IIITech_Deliveries" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="example" id="KWL-Ri-hSK" customClass="ExampleCollectionViewCell" customModule="CardStackCollectionViewLayout_Example" customModuleProvider="target">
                                 <rect key="frame" x="28.5" y="0.0" width="357" height="189"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="sij-50-rwb">

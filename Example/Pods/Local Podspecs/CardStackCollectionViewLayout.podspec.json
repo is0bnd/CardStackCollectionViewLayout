@@ -1,8 +1,8 @@
 {
   "name": "CardStackCollectionViewLayout",
   "version": "0.1.0",
-  "summary": "A short description of CardStackCollectionViewLayout.",
-  "description": "TODO: Add long description of the pod here.",
+  "summary": "UICollectionViewLayout as a stack of cards.",
+  "description": "CardStackCollectionViewLayout provides UICollectionViewLayout using a stacked card metaphore, similar to the Apple Wallet Card view",
   "homepage": "https://github.com/cdstamper/CardStackCollectionViewLayout",
   "license": {
     "type": "MIT",
@@ -15,8 +15,9 @@
     "git": "https://github.com/cdstamper/CardStackCollectionViewLayout.git",
     "tag": "0.1.0"
   },
+  "social_media_url": "https://twitter.com/cdstamper",
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "CardStackCollectionViewLayout/Classes/**/*"
+  "source_files": "CardStackCollectionViewLayout/Sources/**/*"
 }

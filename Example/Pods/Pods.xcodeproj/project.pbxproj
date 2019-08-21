@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11C698E363F0A3CFB52DD7E458346F4B /* CardStackCollectionViewLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A6D10AF94783551DC73B9F163737B3 /* CardStackCollectionViewLayout-dummy.m */; };
 		405B458602F4B2C0A5E64C1C2F16057F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		4101ABD801312D0EE94E0E8730557D8F /* Pods-CardStackCollectionViewLayout_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C2176E82D52E109C7463DF1A0853F /* Pods-CardStackCollectionViewLayout_Example-dummy.m */; };
-		5E21DD6432BEC6229F82B5C8372F4DEB /* CardStackCollectionViewLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DFE78B5C4764910FDCC6D8DECB19BB3 /* CardStackCollectionViewLayout-dummy.m */; };
 		87E44E38E23CDF6E86E595669EE01DFA /* Pods-CardStackCollectionViewLayout_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F50A8512A5A7B4D9DC7BCC78100F3D /* Pods-CardStackCollectionViewLayout_Tests-dummy.m */; };
 		929BD552DA9729CDA94144D492BC3421 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		9CDDA19200C4BDD13A9DC4AB17CD3A24 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		AFD37E984610C7718D7C75E4AFB9B511 /* Pods-CardStackCollectionViewLayout_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 19AA8E2921A4AD47CA5E8C804CF3A8A9 /* Pods-CardStackCollectionViewLayout_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D50B5C4834322AA2080609C64C54DE7F /* CardStackCollectionViewLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 51A2AD2D26BD0275832887FF10F95141 /* CardStackCollectionViewLayout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BE7182E0B55914E4B47C1E2FC93BE114 /* CardStackCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203EE24D9FDC2F08F5831401CAF07DF2 /* CardStackCollectionViewLayout.swift */; };
+		D50B5C4834322AA2080609C64C54DE7F /* CardStackCollectionViewLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 37F3EA8E13BA8912215A3EAFBF60A612 /* CardStackCollectionViewLayout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF21F82F36362AA0A7F03647A3EB994C /* Pods-CardStackCollectionViewLayout_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F28AFCC4CA0802BE0A8EFA43AE2800D /* Pods-CardStackCollectionViewLayout_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F69387679695775D98B9A67D6A98B8D1 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F100C601112EB48C761B9825E75584 /* ReplaceMe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,36 +39,36 @@
 /* Begin PBXFileReference section */
 		0732982942E87A8E3F57C9E1DDF73A0D /* Pods-CardStackCollectionViewLayout_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CardStackCollectionViewLayout_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		10A54EFF7E9FA2EDA7FFF2FBC7FDEC2C /* Pods-CardStackCollectionViewLayout_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CardStackCollectionViewLayout_Example.modulemap"; sourceTree = "<group>"; };
-		112BD356EDE46896CFBF8D4AC4BD8B73 /* CardStackCollectionViewLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CardStackCollectionViewLayout-prefix.pch"; sourceTree = "<group>"; };
 		160B63426103134B41097E29E643C89F /* Pods_CardStackCollectionViewLayout_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CardStackCollectionViewLayout_Example.framework; path = "Pods-CardStackCollectionViewLayout_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		19AA8E2921A4AD47CA5E8C804CF3A8A9 /* Pods-CardStackCollectionViewLayout_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CardStackCollectionViewLayout_Tests-umbrella.h"; sourceTree = "<group>"; };
 		1FB8D9F635E7C11D9EC56B233E395F0A /* Pods-CardStackCollectionViewLayout_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CardStackCollectionViewLayout_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		21BC3B34F807474F17D0299277E9DAA8 /* CardStackCollectionViewLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CardStackCollectionViewLayout.xcconfig; sourceTree = "<group>"; };
-		2DFE78B5C4764910FDCC6D8DECB19BB3 /* CardStackCollectionViewLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CardStackCollectionViewLayout-dummy.m"; sourceTree = "<group>"; };
+		203EE24D9FDC2F08F5831401CAF07DF2 /* CardStackCollectionViewLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardStackCollectionViewLayout.swift; path = CardStackCollectionViewLayout/Sources/CardStackCollectionViewLayout.swift; sourceTree = "<group>"; };
 		2EC984A7BE7525ABA943A4DB27F810DB /* Pods-CardStackCollectionViewLayout_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CardStackCollectionViewLayout_Example-frameworks.sh"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		34C5EAE34BCABB908E19C25D4C2FA426 /* Pods-CardStackCollectionViewLayout_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CardStackCollectionViewLayout_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		51A2AD2D26BD0275832887FF10F95141 /* CardStackCollectionViewLayout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CardStackCollectionViewLayout-umbrella.h"; sourceTree = "<group>"; };
+		37F3EA8E13BA8912215A3EAFBF60A612 /* CardStackCollectionViewLayout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CardStackCollectionViewLayout-umbrella.h"; sourceTree = "<group>"; };
 		549EFA5BBF67FC38B03F6B366885E806 /* Pods-CardStackCollectionViewLayout_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CardStackCollectionViewLayout_Tests-Info.plist"; sourceTree = "<group>"; };
+		54EFE4B02C34231908FC91A62CE26D74 /* CardStackCollectionViewLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CardStackCollectionViewLayout.modulemap; sourceTree = "<group>"; };
 		72F50A8512A5A7B4D9DC7BCC78100F3D /* Pods-CardStackCollectionViewLayout_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CardStackCollectionViewLayout_Tests-dummy.m"; sourceTree = "<group>"; };
+		79F518E603473609FE4DAE3C35F067C4 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		7A8C2176E82D52E109C7463DF1A0853F /* Pods-CardStackCollectionViewLayout_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CardStackCollectionViewLayout_Example-dummy.m"; sourceTree = "<group>"; };
-		7C0E58FD4FC6CA3CEB86DA7510117548 /* CardStackCollectionViewLayout.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = CardStackCollectionViewLayout.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		8527F5A338C7C4E5E1E8C5E2374B1876 /* CardStackCollectionViewLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CardStackCollectionViewLayout.modulemap; sourceTree = "<group>"; };
+		886EB819D08669AD82B8474F34227690 /* CardStackCollectionViewLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CardStackCollectionViewLayout-prefix.pch"; sourceTree = "<group>"; };
+		88C220D98EEA848CC60D059E54D92F3D /* CardStackCollectionViewLayout-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "CardStackCollectionViewLayout-Info.plist"; sourceTree = "<group>"; };
+		8A708B3591406F2D86E8920983996246 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		98575A7D1A87E3BEDE4022154E179CD3 /* Pods-CardStackCollectionViewLayout_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CardStackCollectionViewLayout_Tests.modulemap"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DD9AD2B99E89CC327762D79EFAF301D /* Pods-CardStackCollectionViewLayout_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CardStackCollectionViewLayout_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		9F28AFCC4CA0802BE0A8EFA43AE2800D /* Pods-CardStackCollectionViewLayout_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CardStackCollectionViewLayout_Example-umbrella.h"; sourceTree = "<group>"; };
 		AEF3823DC5912CF64DDC9E2BDCDD9C50 /* CardStackCollectionViewLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CardStackCollectionViewLayout.framework; path = CardStackCollectionViewLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B6F100C601112EB48C761B9825E75584 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = CardStackCollectionViewLayout/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
-		BCAC97E0052D402063666D0552B84963 /* CardStackCollectionViewLayout-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "CardStackCollectionViewLayout-Info.plist"; sourceTree = "<group>"; };
-		C252D7DE9C6AAEAD1C823B7EDB73811B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		B6A6D10AF94783551DC73B9F163737B3 /* CardStackCollectionViewLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CardStackCollectionViewLayout-dummy.m"; sourceTree = "<group>"; };
 		C5DC4616FDD9619512B59A76C63161CB /* Pods_CardStackCollectionViewLayout_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CardStackCollectionViewLayout_Tests.framework; path = "Pods-CardStackCollectionViewLayout_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C946D27E11758217BFA181CBB0631E61 /* Pods-CardStackCollectionViewLayout_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CardStackCollectionViewLayout_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		CA177C2716C0513A8E9A73A508D85F8F /* Pods-CardStackCollectionViewLayout_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CardStackCollectionViewLayout_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		D7660AF82B43D917663E42CEBD134D1E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		DA567F4ED4F6C974AEC04D78E613881F /* CardStackCollectionViewLayout.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = CardStackCollectionViewLayout.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E601A2CB424685B07DE2DC2360998921 /* Pods-CardStackCollectionViewLayout_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CardStackCollectionViewLayout_Example-Info.plist"; sourceTree = "<group>"; };
 		E9A9D611B5C5F2E0E83DA9ED1BF657BB /* Pods-CardStackCollectionViewLayout_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CardStackCollectionViewLayout_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		EB5051D7A363288B1D50BE944F593568 /* Pods-CardStackCollectionViewLayout_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CardStackCollectionViewLayout_Example.release.xcconfig"; sourceTree = "<group>"; };
+		F36FBB5450C22B9677C151D29304CC50 /* CardStackCollectionViewLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CardStackCollectionViewLayout.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +125,16 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		4D304EC9FF54DE82BF4A8A42CD244D29 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				DA567F4ED4F6C974AEC04D78E613881F /* CardStackCollectionViewLayout.podspec */,
+				8A708B3591406F2D86E8920983996246 /* LICENSE */,
+				79F518E603473609FE4DAE3C35F067C4 /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
 		82C87F293E10E7AFA80119FD19A70CF4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,20 +143,6 @@
 				C5DC4616FDD9619512B59A76C63161CB /* Pods_CardStackCollectionViewLayout_Tests.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		8CAB05834AD16198B4194A53FC04DC77 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				8527F5A338C7C4E5E1E8C5E2374B1876 /* CardStackCollectionViewLayout.modulemap */,
-				21BC3B34F807474F17D0299277E9DAA8 /* CardStackCollectionViewLayout.xcconfig */,
-				2DFE78B5C4764910FDCC6D8DECB19BB3 /* CardStackCollectionViewLayout-dummy.m */,
-				BCAC97E0052D402063666D0552B84963 /* CardStackCollectionViewLayout-Info.plist */,
-				112BD356EDE46896CFBF8D4AC4BD8B73 /* CardStackCollectionViewLayout-prefix.pch */,
-				51A2AD2D26BD0275832887FF10F95141 /* CardStackCollectionViewLayout-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/CardStackCollectionViewLayout";
 			sourceTree = "<group>";
 		};
 		A5C08C0DC8D49ADFEC252AF5D50F3896 /* Pods-CardStackCollectionViewLayout_Tests */ = {
@@ -176,7 +172,7 @@
 		CC75DE819DA07532FD08BC3035C880C1 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F59C95F1524E0D0B61E3D0FF256F2C3A /* CardStackCollectionViewLayout */,
+				E6BC5FEE1D17FC382B8DC587BA3E1568 /* CardStackCollectionViewLayout */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
@@ -200,25 +196,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D6DAC0B6CB3094312FE5886BFA00A557 /* Pod */ = {
+		E6BC5FEE1D17FC382B8DC587BA3E1568 /* CardStackCollectionViewLayout */ = {
 			isa = PBXGroup;
 			children = (
-				7C0E58FD4FC6CA3CEB86DA7510117548 /* CardStackCollectionViewLayout.podspec */,
-				C252D7DE9C6AAEAD1C823B7EDB73811B /* LICENSE */,
-				D7660AF82B43D917663E42CEBD134D1E /* README.md */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
-		F59C95F1524E0D0B61E3D0FF256F2C3A /* CardStackCollectionViewLayout */ = {
-			isa = PBXGroup;
-			children = (
-				B6F100C601112EB48C761B9825E75584 /* ReplaceMe.swift */,
-				D6DAC0B6CB3094312FE5886BFA00A557 /* Pod */,
-				8CAB05834AD16198B4194A53FC04DC77 /* Support Files */,
+				203EE24D9FDC2F08F5831401CAF07DF2 /* CardStackCollectionViewLayout.swift */,
+				4D304EC9FF54DE82BF4A8A42CD244D29 /* Pod */,
+				F82EB29506D4D1CC4497CEF4393E9D1A /* Support Files */,
 			);
 			name = CardStackCollectionViewLayout;
 			path = ../..;
+			sourceTree = "<group>";
+		};
+		F82EB29506D4D1CC4497CEF4393E9D1A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				54EFE4B02C34231908FC91A62CE26D74 /* CardStackCollectionViewLayout.modulemap */,
+				F36FBB5450C22B9677C151D29304CC50 /* CardStackCollectionViewLayout.xcconfig */,
+				B6A6D10AF94783551DC73B9F163737B3 /* CardStackCollectionViewLayout-dummy.m */,
+				88C220D98EEA848CC60D059E54D92F3D /* CardStackCollectionViewLayout-Info.plist */,
+				886EB819D08669AD82B8474F34227690 /* CardStackCollectionViewLayout-prefix.pch */,
+				37F3EA8E13BA8912215A3EAFBF60A612 /* CardStackCollectionViewLayout-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/CardStackCollectionViewLayout";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,7 +256,7 @@
 			buildConfigurationList = 003ED3C6974EB3F3AE4B6BC0CC83D044 /* Build configuration list for PBXNativeTarget "CardStackCollectionViewLayout" */;
 			buildPhases = (
 				C3D6A4E5DC02DA53435F8ABDE9B20C00 /* Headers */,
-				46410D5CD9F8F1BFB6369E28AA3B6689 /* Sources */,
+				C98BD793691573359A0F474B66294D71 /* Sources */,
 				7AA011FA611CDB4A6189ED94F93D84FA /* Frameworks */,
 				0E2776BD2FA0C79C415510071E2520CA /* Resources */,
 			);
@@ -368,20 +368,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		46410D5CD9F8F1BFB6369E28AA3B6689 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5E21DD6432BEC6229F82B5C8372F4DEB /* CardStackCollectionViewLayout-dummy.m in Sources */,
-				F69387679695775D98B9A67D6A98B8D1 /* ReplaceMe.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A272A5346CB8118F2F10ED3CE54B80AD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				87E44E38E23CDF6E86E595669EE01DFA /* Pods-CardStackCollectionViewLayout_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C98BD793691573359A0F474B66294D71 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11C698E363F0A3CFB52DD7E458346F4B /* CardStackCollectionViewLayout-dummy.m in Sources */,
+				BE7182E0B55914E4B47C1E2FC93BE114 /* CardStackCollectionViewLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,9 +403,9 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		06A4D7F55C5046EFB319DF331F9B2E95 /* Debug */ = {
+		2D365D62878BF094D688A408E48DC8B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1FB8D9F635E7C11D9EC56B233E395F0A /* Pods-CardStackCollectionViewLayout_Example.debug.xcconfig */;
+			baseConfigurationReference = 34C5EAE34BCABB908E19C25D4C2FA426 /* Pods-CardStackCollectionViewLayout_Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -417,12 +417,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-CardStackCollectionViewLayout_Example/Pods-CardStackCollectionViewLayout_Example-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-CardStackCollectionViewLayout_Tests/Pods-CardStackCollectionViewLayout_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CardStackCollectionViewLayout_Example/Pods-CardStackCollectionViewLayout_Example.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-CardStackCollectionViewLayout_Tests/Pods-CardStackCollectionViewLayout_Tests.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -435,44 +435,10 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		15C1FC93B2220B24915B67FBF388E5EE /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB5051D7A363288B1D50BE944F593568 /* Pods-CardStackCollectionViewLayout_Example.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-CardStackCollectionViewLayout_Example/Pods-CardStackCollectionViewLayout_Example-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CardStackCollectionViewLayout_Example/Pods-CardStackCollectionViewLayout_Example.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		371FDB5EF968D0E4BF7A6A10E6A9386C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 21BC3B34F807474F17D0299277E9DAA8 /* CardStackCollectionViewLayout.xcconfig */;
+			baseConfigurationReference = F36FBB5450C22B9677C151D29304CC50 /* CardStackCollectionViewLayout.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -501,39 +467,7 @@
 			};
 			name = Debug;
 		};
-		A55F67C5604676C97F151C0FA0B38D9C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 21BC3B34F807474F17D0299277E9DAA8 /* CardStackCollectionViewLayout.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/CardStackCollectionViewLayout/CardStackCollectionViewLayout-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/CardStackCollectionViewLayout/CardStackCollectionViewLayout-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/CardStackCollectionViewLayout/CardStackCollectionViewLayout.modulemap";
-				PRODUCT_MODULE_NAME = CardStackCollectionViewLayout;
-				PRODUCT_NAME = CardStackCollectionViewLayout;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		B0087CB4594321EF41619F3181FE120E /* Release */ = {
+		8F17DC3A99F99FBAD606CE6963886315 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -581,7 +515,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -593,7 +527,7 @@
 			};
 			name = Release;
 		};
-		B8BCBD0110C2658BB5DAADB9B7D97B92 /* Debug */ = {
+		916E0404255105F480DC4950B7625F7A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -644,7 +578,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -657,9 +591,41 @@
 			};
 			name = Debug;
 		};
-		C0A2E26E56E6B8032628CF4FF5FEA76C /* Debug */ = {
+		A55F67C5604676C97F151C0FA0B38D9C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 34C5EAE34BCABB908E19C25D4C2FA426 /* Pods-CardStackCollectionViewLayout_Tests.debug.xcconfig */;
+			baseConfigurationReference = F36FBB5450C22B9677C151D29304CC50 /* CardStackCollectionViewLayout.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CardStackCollectionViewLayout/CardStackCollectionViewLayout-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CardStackCollectionViewLayout/CardStackCollectionViewLayout-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CardStackCollectionViewLayout/CardStackCollectionViewLayout.modulemap";
+				PRODUCT_MODULE_NAME = CardStackCollectionViewLayout;
+				PRODUCT_NAME = CardStackCollectionViewLayout;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		AB7519DD8D5DE7BD586D94A1623E0259 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FB8D9F635E7C11D9EC56B233E395F0A /* Pods-CardStackCollectionViewLayout_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -671,12 +637,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-CardStackCollectionViewLayout_Tests/Pods-CardStackCollectionViewLayout_Tests-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-CardStackCollectionViewLayout_Example/Pods-CardStackCollectionViewLayout_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CardStackCollectionViewLayout_Tests/Pods-CardStackCollectionViewLayout_Tests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-CardStackCollectionViewLayout_Example/Pods-CardStackCollectionViewLayout_Example.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -690,7 +656,7 @@
 			};
 			name = Debug;
 		};
-		C1AEBD739881EE54F139EA17E7097747 /* Release */ = {
+		BEF4D5309C37468126B6CF50D331FEF5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C946D27E11758217BFA181CBB0631E61 /* Pods-CardStackCollectionViewLayout_Tests.release.xcconfig */;
 			buildSettings = {
@@ -706,10 +672,44 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-CardStackCollectionViewLayout_Tests/Pods-CardStackCollectionViewLayout_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-CardStackCollectionViewLayout_Tests/Pods-CardStackCollectionViewLayout_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E6C12D8BC9E6065950F42863C73FFF55 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB5051D7A363288B1D50BE944F593568 /* Pods-CardStackCollectionViewLayout_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-CardStackCollectionViewLayout_Example/Pods-CardStackCollectionViewLayout_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CardStackCollectionViewLayout_Example/Pods-CardStackCollectionViewLayout_Example.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -739,8 +739,8 @@
 		3E4DD606E2A7419008728B65B21237FA /* Build configuration list for PBXNativeTarget "Pods-CardStackCollectionViewLayout_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				06A4D7F55C5046EFB319DF331F9B2E95 /* Debug */,
-				15C1FC93B2220B24915B67FBF388E5EE /* Release */,
+				AB7519DD8D5DE7BD586D94A1623E0259 /* Debug */,
+				E6C12D8BC9E6065950F42863C73FFF55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -748,8 +748,8 @@
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B8BCBD0110C2658BB5DAADB9B7D97B92 /* Debug */,
-				B0087CB4594321EF41619F3181FE120E /* Release */,
+				916E0404255105F480DC4950B7625F7A /* Debug */,
+				8F17DC3A99F99FBAD606CE6963886315 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -757,8 +757,8 @@
 		9BCAE5006B662DE78BD1170B6FF115BA /* Build configuration list for PBXNativeTarget "Pods-CardStackCollectionViewLayout_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C0A2E26E56E6B8032628CF4FF5FEA76C /* Debug */,
-				C1AEBD739881EE54F139EA17E7097747 /* Release */,
+				2D365D62878BF094D688A408E48DC8B4 /* Debug */,
+				BEF4D5309C37468126B6CF50D331FEF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
