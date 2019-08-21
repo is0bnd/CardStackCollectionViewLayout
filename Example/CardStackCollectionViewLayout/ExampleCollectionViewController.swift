@@ -10,26 +10,26 @@
 //  and remembering to call -performBatchUpdates before changing the state (expanded or collapsed).
 
 import UIKit
+import CardStackCollectionViewLayout
 
 class ExampleCollectionViewController: UICollectionViewController, CardStackLayoutDelegate {
     
-    var currentState: CardStackLayoutState = .normal
-    var count = 3
+    var currentState: CardStackLayoutState = .collapsed
+    var count = 8
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let layout = CardStackCollectionViewLayout()
-        layout.delegate = self
-        self.collectionView?.collectionViewLayout = layout
+
+        (self.collectionView?.collectionViewLayout as? CardStackCollectionViewLayout)?.delegate = self
     }
     
     @IBAction func toggle() {
-        collectionView?.performBatchUpdates({
-            currentState = currentState == .normal ? .expanded : .normal
-        }) { (success) in
-            print("changed state")
-        }
+//        collectionView?.performBatchUpdates({
+            currentState = currentState == .collapsed ? .expanded : .collapsed
+            collectionView?.reloadData()
+//        }) { (success) in
+//            print("changed state")
+//        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
