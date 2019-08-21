@@ -120,9 +120,9 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
     /// DISAPPEAR: Animate offscreen to the right edge, with a bit of rotational transform
     override open func finalLayoutAttributesForDisappearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         let attr = UICollectionViewLayoutAttributes()
-        let frame = frameFor(index: itemIndexPath.row, cardState: state, translation: 0)
-        attr.frame = CGRect(x: frame.maxX + fullWidth, y: frame.maxY - 40, width: frame.width, height: frame.height)
-        attr.transform = CGAffineTransform(rotationAngle: 0.3)
+//        let frame = frameFor(index: itemIndexPath.row, cardState: state, translation: 0)
+//        attr.frame = CGRect(x: frame.maxX + fullWidth, y: frame.maxY - 40, width: frame.width, height: frame.height)
+//        attr.transform = CGAffineTransform(rotationAngle: 0.3)
         return attr
     }
     
