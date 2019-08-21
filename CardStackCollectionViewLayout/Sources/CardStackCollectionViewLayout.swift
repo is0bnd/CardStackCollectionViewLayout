@@ -43,8 +43,8 @@ public protocol CardStackLayoutDelegate {
 
 open class CardStackCollectionViewLayout: UICollectionViewLayout {
     
-    var delegate: CardStackLayoutDelegate?
-    var config = CardStackLayoutConfig()
+    public var delegate: CardStackLayoutDelegate?
+    public var config = CardStackLayoutConfig()
     
     var contentBounds = CGRect.zero
     var contentHeight: CGFloat = 0.0
