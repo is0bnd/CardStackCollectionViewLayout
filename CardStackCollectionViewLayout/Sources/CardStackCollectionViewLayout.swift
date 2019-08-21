@@ -30,6 +30,9 @@ public struct CardStackLayoutConfig {
 
     /// Card width offset (multiplied by position) when collapsed
     public let depthWidthOffset: CGFloat = 30
+    
+    /// Number of cards shown in the collapsed state
+    public let normalStackDepthLimit: Int = 3
 }
 
 @objc public enum CardStackLayoutState: Int {
@@ -143,8 +146,9 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
         // Card states adjustment
         switch cardState {
         case .expanded:
-            let val = (config.cardHeight * CGFloat(index))
-            frame.origin.y = (config.verticalSpacing * CGFloat(index)) + val
+            let limitedIndex = max(config.normalStackDepthLimit, index)
+            let val = (config.cardHeight * CGFloat(limitedIndex))
+            frame.origin.y = (config.verticalSpacing * CGFloat(limitedIndex)) + val
             
         case .normal:
             frame.origin.y = config.verticalSpacing + (config.cardPeekHeight * CGFloat(index))
