@@ -42,7 +42,7 @@ public struct CardStackLayoutConfig {
 }
 
 @objc public protocol CardStackLayoutDelegate: class {
-    var currentState: CardStackLayoutState { get }
+    func currentState(section: Int) -> CardStackLayoutState
 }
 
 open class CardStackCollectionViewLayout: UICollectionViewLayout {
@@ -56,9 +56,9 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
     
     private var fullWidth: CGFloat { get { collectionView?.frame.size.width ?? UIScreen.main.bounds.width }}
     
-    var state: CardStackLayoutState { get {
-        return delegate?.currentState ?? .collapsed
-        }}
+    func state(_ section: Int) -> CardStackLayoutState {
+        return delegate?.currentState(section: section) ?? .collapsed
+    }
     
     var lastRenderedState: CardStackLayoutState?
     
@@ -84,24 +84,25 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
         
         let kFractionToMove: CGFloat = 0.0 // future dragging translation
         contentHeight = CGFloat(kFractionToMove)
+        var prevSectionsContentHeight:CGFloat = 0.0
         cachedAttributes.removeAll()
 
         let sectionCount = collection.numberOfSections
-        let qty = collection.numberOfItems(inSection: 0)
         for section in 0..<sectionCount {
+            let qty = collection.numberOfItems(inSection: section)
             for index in 0..<qty {
                 
-                var offset: CGFloat = kFractionToMove
-                if index == 0 && section > 0 {
-                    offset = contentHeight + config.sectionSpacing
-                }
+                let state = self.state(section)
+
+                // add offset equal to previous section height
+                let sectionOffset = prevSectionsContentHeight
                 
                 let layout = UICollectionViewLayoutAttributes(forCellWith: IndexPath(row: index, section: section))
-                layout.frame = frameFor(index: index, cardState: state, translation: offset)
+                layout.frame = frameFor(index: index, cardState: state, translation: sectionOffset)
                 
                 // content height needs to be based on render At height not 'visual height' since we're stacking
                 if state == .expanded && index != 0 {
-                    contentHeight =  layout.frame.origin.y + config.cardHeight + config.verticalSpacing
+                    contentHeight = layout.frame.origin.y + config.cardHeight + config.verticalSpacing
                 } else if state == .collapsed  {
                     contentHeight = layout.frame.origin.y + config.cardPeekHeight
                 }
@@ -114,6 +115,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
                 }
                 cachedAttributes[section]?.append(layout)
             }
+            prevSectionsContentHeight += (contentHeight + config.sectionSpacing)
         }
     }
     
@@ -174,9 +176,9 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
             frame.origin.y = spaces + heights + translation
         case .collapsed:
             let limitedIndex = min(config.normalStackDepthLimit, index)
-            frame.origin.y = config.cardPeekHeight * CGFloat(limitedIndex) + translation
+            frame.origin.y = (config.cardPeekHeight * CGFloat(limitedIndex)) + translation
         }
-
+        
         return frame
     }
 }

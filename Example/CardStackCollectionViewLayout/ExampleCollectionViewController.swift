@@ -14,7 +14,11 @@ import CardStackCollectionViewLayout
 
 class ExampleCollectionViewController: UICollectionViewController, CardStackLayoutDelegate {
     
-    var currentState: CardStackLayoutState = .collapsed
+    func currentState(section: Int) -> CardStackLayoutState {
+        return section == 0 ? _topState : .expanded
+    }
+
+    var _topState: CardStackLayoutState = .collapsed
     var count = 8
     
     override func viewDidLoad() {
@@ -25,7 +29,7 @@ class ExampleCollectionViewController: UICollectionViewController, CardStackLayo
     
     @IBAction func toggle() {
 //        collectionView?.performBatchUpdates({
-            currentState = currentState == .collapsed ? .expanded : .collapsed
+            _topState = _topState == .collapsed ? .expanded : .collapsed
             collectionView?.reloadData()
 //        }) { (success) in
 //            print("changed state")
@@ -42,7 +46,7 @@ class ExampleCollectionViewController: UICollectionViewController, CardStackLayo
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "example", for: indexPath) as! ExampleCollectionViewCell
-        cell.label.text = "Row \(indexPath.row)"
+        cell.label.text = "Row \(indexPath.row) : \(indexPath.section)"
         return cell
     }
 }
