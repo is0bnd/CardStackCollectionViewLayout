@@ -39,6 +39,7 @@ public struct CardStackLayoutConfig {
 @objc public enum CardStackLayoutState: Int {
     case collapsed
     case expanded
+    case regular // not a card stac, just a list
 }
 
 @objc public protocol CardStackLayoutDelegate: class {
@@ -149,14 +150,19 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
         // Card widths
         let coefficent = index //, config.normalStackDepthLimit)
         var additionalHorizontalPadding: CGFloat = 0
-        if cardState == .collapsed {
+        switch cardState {
+        case .collapsed:
             // NORMAL/COLLAPSED
             // 1...3 should gradually decrease width, aftward remain fixed. 0th remains full width.
             additionalHorizontalPadding = coefficent == 0 ? 0.0 : (CGFloat(coefficent) * config.depthWidthOffset)
-        } else {
+        case .expanded:
             // EXPANDED
             // card width should be consistent, but smaller than the 0th
             additionalHorizontalPadding = coefficent == 0 ? 0.0 : config.depthWidthOffset
+        case .regular:
+            // NOT A STACK
+            // no need to show indentation at all
+            additionalHorizontalPadding = 0
         }
         
         let origin = CGPoint(x: config.horizontalSpacing + (additionalHorizontalPadding / 2), y: translation)
@@ -170,7 +176,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
         
         // Apply index offsets, padding to the bottom of the cell if not 0th
         switch cardState {
-        case .expanded:
+        case .expanded, .regular:
             let heights = (config.cardHeight * CGFloat(index))
             let spaces = (config.verticalSpacing * CGFloat(index))
             frame.origin.y = spaces + heights + translation

@@ -15,7 +15,7 @@ import CardStackCollectionViewLayout
 class ExampleCollectionViewController: UICollectionViewController, CardStackLayoutDelegate {
     
     func currentState(section: Int) -> CardStackLayoutState {
-        return section == 0 ? _topState : .expanded
+        return section == 0 ? _topState : .regular
     }
 
     var _topState: CardStackLayoutState = .collapsed
