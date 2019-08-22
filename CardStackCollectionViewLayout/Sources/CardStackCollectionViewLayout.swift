@@ -102,7 +102,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
                 layout.frame = frameFor(index: index, cardState: state, translation: sectionOffset)
                 
                 // content height needs to be based on render At height not 'visual height' since we're stacking
-                if state == .expanded && index != 0 {
+                if (state == .expanded || state == .regular) && index != 0 {
                     contentHeight = layout.frame.origin.y + config.cardHeight + config.verticalSpacing
                 } else if state == .collapsed  {
                     contentHeight = layout.frame.origin.y + config.cardPeekHeight
