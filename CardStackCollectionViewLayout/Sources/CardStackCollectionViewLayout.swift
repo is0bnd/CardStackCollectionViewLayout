@@ -17,22 +17,23 @@ import UIKit
 
 public struct CardStackLayoutConfig {
     /// Fully-expanded height
-    public let cardHeight: CGFloat = 130
+    public var cardHeight: CGFloat = 130
     
     /// Card height when collapsed
-    public let collapsedHeight: CGFloat = 50
+    public var collapsedHeight: CGFloat = 50
     
     /// Visible card area (height) when collapsed
-    public let cardPeekHeight: CGFloat = 30
+    public var cardPeekHeight: CGFloat = 30
     
-    public let horizontalSpacing: CGFloat = 10
-    public let verticalSpacing: CGFloat = 30
+    public var horizontalSpacing: CGFloat = 10
+    public var verticalSpacing: CGFloat = 30
+    public var sectionSpacing: CGFloat = 200
     
     /// Card width offset (multiplied by position) when collapsed
-    public let depthWidthOffset: CGFloat = 30
+    public var depthWidthOffset: CGFloat = 30
     
     /// Number of cards shown in the collapsed state
-    public let normalStackDepthLimit: Int = 3
+    public var normalStackDepthLimit: Int = 3
 }
 
 @objc public enum CardStackLayoutState: Int {
@@ -51,7 +52,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
     
     var contentBounds = CGRect.zero
     var contentHeight: CGFloat = 0.0
-    var cachedAttributes = [UICollectionViewLayoutAttributes]()
+    var cachedAttributes = [Int: [UICollectionViewLayoutAttributes]]()
     
     private var fullWidth: CGFloat { get { collectionView?.frame.size.width ?? UIScreen.main.bounds.width }}
     
@@ -81,35 +82,49 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
             return
         }
         
-        let kFractionToMove: Float = 0.0 // future dragging translation
+        let kFractionToMove: CGFloat = 0.0 // future dragging translation
         contentHeight = CGFloat(kFractionToMove)
         cachedAttributes.removeAll()
 
+        let sectionCount = collection.numberOfSections
         let qty = collection.numberOfItems(inSection: 0)
-        for index in 0..<qty {
-            let layout = UICollectionViewLayoutAttributes(forCellWith: IndexPath(row: index, section: 0))
-            layout.frame = frameFor(index: index, cardState: state, translation: kFractionToMove)
-            
-            // content height needs to be based on render At height not 'visual height' since we're stacking
-            if state == .expanded && index != 0 {
-                contentHeight =  layout.frame.origin.y + config.cardHeight + config.verticalSpacing
-            } else if state == .collapsed  {
-                contentHeight = layout.frame.origin.y + config.cardPeekHeight
+        for section in 0..<sectionCount {
+            for index in 0..<qty {
+                
+                var offset: CGFloat = kFractionToMove
+                if index == 0 && section > 0 {
+                    offset = contentHeight + config.sectionSpacing
+                }
+                
+                let layout = UICollectionViewLayoutAttributes(forCellWith: IndexPath(row: index, section: section))
+                layout.frame = frameFor(index: index, cardState: state, translation: offset)
+                
+                // content height needs to be based on render At height not 'visual height' since we're stacking
+                if state == .expanded && index != 0 {
+                    contentHeight =  layout.frame.origin.y + config.cardHeight + config.verticalSpacing
+                } else if state == .collapsed  {
+                    contentHeight = layout.frame.origin.y + config.cardPeekHeight
+                }
+                
+                layout.zIndex = qty - index
+                layout.isHidden = state == .collapsed ? index > config.normalStackDepthLimit : false
+                
+                if (cachedAttributes[section] == nil) {
+                    cachedAttributes[section] = []
+                }
+                cachedAttributes[section]?.append(layout)
             }
-            
-            layout.zIndex = qty - index
-            layout.isHidden = state == .collapsed ? index > config.normalStackDepthLimit : false
-            
-            cachedAttributes.append(layout)
         }
     }
     
     override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        return cachedAttributes.filter { rect.intersects($0.frame) } /// todo: optimize this filter op
+        return cachedAttributes.flatMap {
+            $1.filter { rect.intersects($0.frame) }
+        } /// todo: optimize this filter op
     }
     
     override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return cachedAttributes[indexPath.row]
+        return cachedAttributes[indexPath.section]?[indexPath.row]
     }
     
     // MARK: - Insert/Delete Transitions
@@ -127,7 +142,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
 //    }
     
     // MARK: - Frame Calculations
-    private func frameFor(index: Int, cardState: CardStackLayoutState, translation: Float) -> CGRect {
+    private func frameFor(index: Int, cardState: CardStackLayoutState, translation: CGFloat) -> CGRect {
         
         // Card widths
         let coefficent = index //, config.normalStackDepthLimit)
@@ -142,7 +157,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
             additionalHorizontalPadding = coefficent == 0 ? 0.0 : config.depthWidthOffset
         }
         
-        let origin = CGPoint(x: config.horizontalSpacing + (additionalHorizontalPadding / 2), y:0)
+        let origin = CGPoint(x: config.horizontalSpacing + (additionalHorizontalPadding / 2), y: translation)
         let width = fullWidth - (config.horizontalSpacing + config.horizontalSpacing + additionalHorizontalPadding)
 
         var frame = CGRect(origin: origin, size: CGSize(width: width, height: config.cardHeight))
@@ -156,10 +171,10 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
         case .expanded:
             let heights = (config.cardHeight * CGFloat(index))
             let spaces = (config.verticalSpacing * CGFloat(index))
-            frame.origin.y = spaces + heights
+            frame.origin.y = spaces + heights + translation
         case .collapsed:
             let limitedIndex = min(config.normalStackDepthLimit, index)
-            frame.origin.y = config.cardPeekHeight * CGFloat(limitedIndex)
+            frame.origin.y = config.cardPeekHeight * CGFloat(limitedIndex) + translation
         }
 
         return frame

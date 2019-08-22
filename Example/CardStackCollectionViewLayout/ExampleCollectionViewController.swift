@@ -32,6 +32,10 @@ class ExampleCollectionViewController: UICollectionViewController, CardStackLayo
 //        }
     }
     
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return count
     }
