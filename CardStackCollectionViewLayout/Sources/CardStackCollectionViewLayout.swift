@@ -17,7 +17,7 @@ import UIKit
 
 public struct CardStackLayoutConfig {
     /// Fully-expanded height
-    public var cardHeight: CGFloat = 130
+    public var cardHeight: CGFloat = 100
     
     /// Card height when collapsed
     public var collapsedHeight: CGFloat = 50
@@ -27,7 +27,7 @@ public struct CardStackLayoutConfig {
     
     public var horizontalSpacing: CGFloat = 10
     public var verticalSpacing: CGFloat = 30
-    public var sectionSpacing: CGFloat = 200
+    public var sectionSpacing: CGFloat = 50
     
     /// Card width offset (multiplied by position) when collapsed
     public var depthWidthOffset: CGFloat = 30
@@ -108,9 +108,9 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
                                         cardState: state,
                                         translation: sectionOffset)
                 
-                // content height needs to be based on render At height not 'visual height' since we're stacking
+                // content height might be based on a render height not 'visual height' since we're stacking
                 if (state == .expanded || state == .regular) && index != 0 {
-                    contentHeight = layout.frame.origin.y + layout.frame.size.height + config.verticalSpacing
+                    contentHeight = layout.frame.origin.y + layout.frame.size.height
                 } else if state == .collapsed  {
                     contentHeight = layout.frame.origin.y + config.cardPeekHeight
                 }
@@ -123,7 +123,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
                 }
                 cachedAttributes[section]?.append(layout)
             }
-            prevSectionsContentHeight += (contentHeight + config.sectionSpacing)
+            prevSectionsContentHeight += config.sectionSpacing
         }
     }
     
@@ -156,50 +156,45 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
         
         let index = indexPath.row
         
-        // Card widths
-        let coefficent = index //, config.normalStackDepthLimit)
-        var additionalHorizontalPadding: CGFloat = 0
-        switch cardState {
-        case .collapsed:
-            // NORMAL/COLLAPSED
-            // 1...3 should gradually decrease width, aftward remain fixed. 0th remains full width.
-            additionalHorizontalPadding = coefficent == 0 ? 0.0 : (CGFloat(coefficent) * config.depthWidthOffset)
-        case .expanded:
-            // EXPANDED
-            // card width should be consistent, but smaller than the 0th
-            additionalHorizontalPadding = coefficent == 0 ? 0.0 : config.depthWidthOffset
-        case .regular:
-            // NOT A STACK
-            // no need to show indentation at all
-            additionalHorizontalPadding = 0
-        }
+        // WIDTHS (if collapsed, we will progressively inset rows)
+        let insetBy: CGFloat = {
+            let coefficent = index //, config.normalStackDepthLimit)
+            var additionalHorizontalPadding: CGFloat = 0
+            switch cardState {
+            case .collapsed:
+                // NORMAL/COLLAPSED
+                // 1...3 should gradually decrease width, aftward remain fixed. 0th remains full width.
+                additionalHorizontalPadding = coefficent == 0 ? 0.0 : (CGFloat(coefficent) * config.depthWidthOffset)
+            case .expanded:
+                // EXPANDED
+                // card width should be consistent, but smaller than the 0th
+                additionalHorizontalPadding = coefficent == 0 ? 0.0 : config.depthWidthOffset
+            case .regular:
+                // NOT A STACK
+                // no need to show indentation at all
+                additionalHorizontalPadding = 0
+            }
+            return additionalHorizontalPadding
+        }()
+        let width = fullWidth - (config.horizontalSpacing + config.horizontalSpacing + insetBy)
         
+        // HEIGHTS
         var height = config.cardHeight
         if let c = collectionView,
             let size = delegate?.collectionView?(c, layout: self, sizeForItemAt: indexPath) {
                 height = size.height
         }
-        
-        let origin = CGPoint(x: config.horizontalSpacing + (additionalHorizontalPadding / 2), y: translation)
-        let width = fullWidth - (config.horizontalSpacing + config.horizontalSpacing + additionalHorizontalPadding)
-
-        var frame = CGRect(origin: origin, size: CGSize(width: width, height: height))
-        
-        if index == 0 {
-            return frame
-        }
-        
-        // Apply index offsets, padding to the bottom of the cell if not 0th
+            
+        // POSITIONS
+        var origin = CGPoint(x: config.horizontalSpacing + (insetBy / 2),
+                             y: contentHeight + translation)
         switch cardState {
         case .expanded, .regular:
-            let heights = (frame.height * CGFloat(index))
-            let spaces = (config.verticalSpacing * CGFloat(index))
-            frame.origin.y = spaces + heights + translation
+            origin.y = contentHeight + translation
         case .collapsed:
-            let limitedIndex = min(config.normalStackDepthLimit, index)
-            frame.origin.y = (config.cardPeekHeight * CGFloat(limitedIndex)) + translation
+            origin.y = contentHeight + translation
         }
         
-        return frame
+        return CGRect(origin: origin, size: CGSize(width: width, height: height))
     }
 }
