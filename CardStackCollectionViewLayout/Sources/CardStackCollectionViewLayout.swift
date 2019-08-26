@@ -179,7 +179,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
         if let c = collectionView,
             let size = delegate?.collectionView?(c, layout: self, sizeForItemAt: indexPath) {
                 height = size.height
-        }
+        }        
             
         // POSITIONS
         var origin = CGPoint(x: config.horizontalSpacing + (insetBy / 2),
@@ -188,7 +188,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
         case .expanded, .regular:
             origin.y = contentHeight + translation
         case .collapsed:
-            origin.y = contentHeight + translation
+            origin.y = config.cardPeekHeight + translation
         }
         
         return CGRect(origin: origin, size: CGSize(width: width, height: height))
