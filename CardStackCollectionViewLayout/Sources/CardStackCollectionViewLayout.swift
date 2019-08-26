@@ -192,12 +192,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
         // Apply index offsets, padding to the bottom of the cell if not 0th
         switch cardState {
         case .expanded, .regular:
-            var offset = frame.height
-            if index < 2 {
-                // the 1th card needs an offset equal to 0th height
-                offset = config.cardHeight
-            }
-            let heights = (offset * CGFloat(index))
+            let heights = (frame.height * CGFloat(index))
             let spaces = (config.verticalSpacing * CGFloat(index))
             frame.origin.y = spaces + heights + translation
         case .collapsed:
