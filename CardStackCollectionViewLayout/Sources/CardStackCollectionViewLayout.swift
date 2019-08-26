@@ -105,7 +105,10 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
                                         translation: kFractionToMove)
                 
                 // content height might be based on a render height not 'visual height' since we're stacking
-                if (state == .expanded || state == .regular) {
+                let isLast = row == (qty - 1)
+                if isLast {
+                    contentHeight = layout.frame.origin.y + layout.frame.size.height
+                } else if (state == .expanded || state == .regular) {
                     contentHeight = layout.frame.origin.y + layout.frame.size.height + config.verticalSpacing
                 } else if state == .collapsed  {
                     contentHeight = layout.frame.origin.y + config.cardPeekHeight
@@ -183,7 +186,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
             
         // POSITIONS
         let origin = CGPoint(x: config.horizontalSpacing + (insetBy / 2),
-                             y: contentHeight + translation)
+                             y: contentHeight)
         
         return CGRect(origin: origin, size: CGSize(width: width, height: height))
     }
