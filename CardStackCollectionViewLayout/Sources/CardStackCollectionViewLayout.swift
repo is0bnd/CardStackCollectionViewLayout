@@ -144,13 +144,15 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
     /// DISAPPEAR: Animate offscreen to the right edge, with a bit of rotational transform
     override open func finalLayoutAttributesForDisappearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         let attr = UICollectionViewLayoutAttributes(forCellWith: itemIndexPath)
-        let frame = frameFor(index: itemIndexPath, cardState: state(itemIndexPath.section), translation: 0)
+        let frame = attr.frame
         attr.frame = CGRect(x: frame.maxX + fullWidth, y: frame.maxY - 40, width: frame.width, height: frame.height)
         attr.transform = CGAffineTransform(rotationAngle: 0.3)
         return config.showDeleteAnimation ? attr : nil
     }
     
     // MARK: - Frame Calculations
+    /// currently this can only be run in-order as it is iterative
+    /// todo: instead use an offset parameter, and write code to generate it w/o full layout
     private func frameFor(index indexPath: IndexPath, cardState: CardStackLayoutState, translation: CGFloat) -> CGRect {
         
         let index = indexPath.row
