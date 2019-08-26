@@ -119,7 +119,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
                 }
                 cachedAttributes[section]?.append(layout)
             }
-            contentHeight += config.sectionSpacing + 200
+            contentHeight += config.sectionSpacing
         }
     }
     
@@ -179,17 +179,11 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
         if let c = collectionView,
             let size = delegate?.collectionView?(c, layout: self, sizeForItemAt: indexPath) {
                 height = size.height
-        }        
+        }
             
         // POSITIONS
-        var origin = CGPoint(x: config.horizontalSpacing + (insetBy / 2),
+        let origin = CGPoint(x: config.horizontalSpacing + (insetBy / 2),
                              y: contentHeight + translation)
-        switch cardState {
-        case .expanded, .regular:
-            origin.y = contentHeight + translation
-        case .collapsed:
-            origin.y = config.cardPeekHeight + translation
-        }
         
         return CGRect(origin: origin, size: CGSize(width: width, height: height))
     }
