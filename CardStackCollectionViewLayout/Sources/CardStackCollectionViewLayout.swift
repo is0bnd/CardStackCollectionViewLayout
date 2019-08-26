@@ -95,31 +95,31 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
         let sectionCount = collection.numberOfSections
         for section in 0..<sectionCount {
             let qty = collection.numberOfItems(inSection: section)
-            for index in 0..<qty {
+            for row in 0..<qty {
                 
                 let state = self.state(section)
                 
-                let layout = UICollectionViewLayoutAttributes(forCellWith: IndexPath(row: index, section: section))
-                layout.frame = frameFor(index: IndexPath(row: index, section: section),
+                let layout = UICollectionViewLayoutAttributes(forCellWith: IndexPath(row: row, section: section))
+                layout.frame = frameFor(index: IndexPath(row: row, section: section),
                                         cardState: state,
                                         translation: kFractionToMove)
                 
                 // content height might be based on a render height not 'visual height' since we're stacking
-                if (state == .expanded || state == .regular) && index != 0 {
+                if (state == .expanded || state == .regular) {
                     contentHeight = layout.frame.origin.y + layout.frame.size.height + config.verticalSpacing
                 } else if state == .collapsed  {
                     contentHeight = layout.frame.origin.y + config.cardPeekHeight
                 }
                 
-                layout.zIndex = qty - index
-                layout.isHidden = state == .collapsed ? index > config.normalStackDepthLimit : false
+                layout.zIndex = qty - row
+                layout.isHidden = state == .collapsed ? row > config.normalStackDepthLimit : false
                 
                 if (cachedAttributes[section] == nil) {
                     cachedAttributes[section] = []
                 }
                 cachedAttributes[section]?.append(layout)
             }
-            contentHeight += config.sectionSpacing
+            contentHeight += config.sectionSpacing + 200
         }
     }
     
