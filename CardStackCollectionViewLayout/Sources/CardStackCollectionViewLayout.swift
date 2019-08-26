@@ -34,6 +34,9 @@ public struct CardStackLayoutConfig {
     
     /// Number of cards shown in the collapsed state
     public var normalStackDepthLimit: Int = 3
+    
+    /// When removing cells, animates a 'flip' off the right edge
+    public var showDeleteAnimation: Bool = true
 }
 
 @objc public enum CardStackLayoutState: Int {
@@ -141,7 +144,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
         let frame = frameFor(index: itemIndexPath.row, cardState: state(itemIndexPath.section), translation: 0)
         attr.frame = CGRect(x: frame.maxX + fullWidth, y: frame.maxY - 40, width: frame.width, height: frame.height)
         attr.transform = CGAffineTransform(rotationAngle: 0.3)
-        return attr
+        return config.showDeleteAnimation ? attr : nil
     }
     
     // MARK: - Frame Calculations
