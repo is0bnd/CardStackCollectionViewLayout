@@ -101,7 +101,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
         /// returns the offset added in the primary axis (height)
         func insertSupplementaryAttribute(for indexPath: IndexPath, kind: String, relatedItemFrame: CGRect) -> CGFloat {
             let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: kind, with: indexPath)
-            let isHeader = kind == UICollectionElementKindSectionHeader
+            let isHeader = kind == UICollectionView.elementKindSectionHeader
             if let delegate = self.delegate, let collection = self.collectionView {
                 if isHeader, let value = delegate.collectionView?(collection, layout: self, referenceSizeForHeaderInSection: indexPath.section) {
                     let ypos = (relatedItemFrame.origin.y - value.height)
@@ -166,7 +166,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
             let headerItemIndex = IndexPath(row: 0, section: section)
             if let headerRelatedCellAttr = cachedAttributes[headerItemIndex.section]?[headerItemIndex.row] {
                 let offset = insertSupplementaryAttribute(for: headerItemIndex,
-                    kind: UICollectionElementKindSectionHeader,
+                    kind: UICollectionView.elementKindSectionHeader,
                     relatedItemFrame: headerRelatedCellAttr.frame)
                 contentHeight += offset
             }
@@ -175,7 +175,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
             let footerItemIndex = IndexPath(row: qty - 1, section: section)
             if let footerRelatedCellAttr = cachedAttributes[footerItemIndex.section]?[footerItemIndex.row] {
                 let offset = insertSupplementaryAttribute(for: footerItemIndex,
-                    kind: UICollectionElementKindSectionFooter,
+                    kind: UICollectionView.elementKindSectionFooter,
                     relatedItemFrame: footerRelatedCellAttr.frame)
                 contentHeight += offset
             }
