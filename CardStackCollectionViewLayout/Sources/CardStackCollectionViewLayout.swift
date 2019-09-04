@@ -49,6 +49,10 @@ public struct CardStackLayoutConfig {
     func currentState(section: Int) -> CardStackLayoutState
     
     @objc optional func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+    
+    @objc optional func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize
+    
+    @objc optional func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize
 }
 
 open class CardStackCollectionViewLayout: UICollectionViewLayout {
@@ -58,7 +62,11 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
     
     var contentBounds = CGRect.zero
     var contentHeight: CGFloat = 0.0
+    
+    /// cell attributes
     var cachedAttributes = [Int: [UICollectionViewLayoutAttributes]]()
+    /// supplementary view attributes indexed by type
+    var cachedSupplementaryAttributes = [String: UICollectionViewLayoutAttributes]()
     
     private var fullWidth: CGFloat { get { collectionView?.frame.size.width ?? UIScreen.main.bounds.width }}
     
@@ -88,6 +96,35 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
             return
         }
         
+        // SUPPLEMENTARY VIEWS
+        /// inserts attributes for a supplementary view, given the frame of the first/last ('related item') cell in section
+        /// returns the offset added in the primary axis (height)
+        func insertSupplementaryAttribute(for indexPath: IndexPath, kind: String, relatedItemFrame: CGRect) -> CGFloat {
+            let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: kind, with: indexPath)
+            let isHeader = kind == UICollectionElementKindSectionHeader
+            if let delegate = self.delegate, let collection = self.collectionView {
+                if isHeader, let value = delegate.collectionView?(collection, layout: self, referenceSizeForHeaderInSection: indexPath.section) {
+                    let ypos = (relatedItemFrame.origin.y - value.height)
+                    attributes.frame = CGRect(x: (fullWidth - value.width) / 2,
+                                              y: ypos,
+                                              width: value.width,
+                                              height: value.height)
+                    attributes.frame.size = CGSize(width: value.width, height: value.height)
+                } else if !isHeader, let value = delegate.collectionView?(collection, layout: self, referenceSizeForFooterInSection: indexPath.section) {
+                    let ypos = (relatedItemFrame.origin.y + relatedItemFrame.size.height)
+                    attributes.frame = CGRect(x: (fullWidth - value.width) / 2,
+                                              y: ypos,
+                                              width: value.width,
+                                              height: value.height)
+                    attributes.frame.size = CGSize(width: value.width, height: value.height)
+                }
+                cachedSupplementaryAttributes[kind] = attributes
+                return attributes.frame.size.height
+            }
+            return 0
+        }
+
+        // CELLS
         let kFractionToMove: CGFloat = 0.0 // future dragging translation
         contentHeight = CGFloat(kFractionToMove)
         cachedAttributes.removeAll()
@@ -95,6 +132,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
         let sectionCount = collection.numberOfSections
         for section in 0..<sectionCount {
             let qty = collection.numberOfItems(inSection: section)
+            
             for row in 0..<qty {
                 
                 let state = self.state(section)
@@ -123,17 +161,47 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
                 cachedAttributes[section]?.append(layout)
             }
             contentHeight += config.sectionSpacing
+            
+            // HEADER
+            let headerItemIndex = IndexPath(row: 0, section: section)
+            if let headerRelatedCellAttr = cachedAttributes[headerItemIndex.section]?[headerItemIndex.row] {
+                let offset = insertSupplementaryAttribute(for: headerItemIndex,
+                    kind: UICollectionElementKindSectionHeader,
+                    relatedItemFrame: headerRelatedCellAttr.frame)
+                contentHeight += offset
+            }
+            
+            // FOOTER
+            let footerItemIndex = IndexPath(row: qty - 1, section: section)
+            if let footerRelatedCellAttr = cachedAttributes[footerItemIndex.section]?[footerItemIndex.row] {
+                let offset = insertSupplementaryAttribute(for: footerItemIndex,
+                    kind: UICollectionElementKindSectionFooter,
+                    relatedItemFrame: footerRelatedCellAttr.frame)
+                contentHeight += offset
+            }
         }
     }
     
+    /// returns cached attributes for ANY item type
     override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        return cachedAttributes.flatMap {
+        let cells = cachedAttributes.flatMap {
             $1.filter { rect.intersects($0.frame) }
-        } /// todo: optimize this filter op
+        }
+        let supplementary = cachedSupplementaryAttributes.compactMap { $0.value }.filter {
+            rect.intersects($0.frame)
+        }
+        return [cells, supplementary].flatMap{ $0 }
+        /// todo: optimize this filter op
     }
     
+    /// cached cell attributes
     override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return cachedAttributes[indexPath.section]?[indexPath.row]
+    }
+    
+    /// cached header/footer attributes
+    open override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return cachedSupplementaryAttributes[elementKind]
     }
     
     // MARK: - Insert/Delete Transitions
@@ -157,7 +225,11 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
         
         let index = indexPath.row
         
-        // WIDTHS (if collapsed, we will progressively inset rows)
+        // WIDTHS (if collapsed, we will progressively inset rows horizontally) like:
+        // [________________]
+        //   [____________]
+        //      [______]
+        
         let insetBy: CGFloat = {
             let coefficent = index //, config.normalStackDepthLimit)
             var additionalHorizontalPadding: CGFloat = 0
@@ -185,7 +257,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
             let size = delegate?.collectionView?(c, layout: self, sizeForItemAt: indexPath) {
                 height = size.height
         }
-            
+        
         // POSITIONS
         let origin = CGPoint(x: config.horizontalSpacing + (insetBy / 2),
                              y: contentHeight)
