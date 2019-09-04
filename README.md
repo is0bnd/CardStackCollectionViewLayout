@@ -1,5 +1,7 @@
 # CardStackCollectionViewLayout
 
+![](https://github.com/cdstamper/CardStackCollectionViewLayout/edit/master/README.md)
+
 ## What is it?
 CardStackCollectionViewLayout provides UICollectionViewLayout using a stacked card metaphore, similar to Apple Wallet's Card view. The 0th (uppermost) card is displayed on the top of the stack, and the stack may be expanded (fanned-out) or displayed normally as a stack of cards with a small portion of the bottom of each card visible. 
 
