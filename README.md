@@ -29,7 +29,7 @@ pod 'CardStackCollectionViewLayout'
 Please send PRs!
 
 ## Known Issues
-Currently the delete animation is shown when changing modes if -performBatchUpdates is used (for example when expanding the card stack).
+Currently the delete animation is shown when changing modes if -performBatchUpdates is used (for example when expanding the card stack). As a temporary workaround you may set the `showDeleteAnimation` flag to false while changing modes.
 
 ## Author
 
