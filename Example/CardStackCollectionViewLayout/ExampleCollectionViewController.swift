@@ -28,8 +28,8 @@ class ExampleCollectionViewController: UICollectionViewController, CardStackLayo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView!.register(Cell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "example_top")
-        collectionView!.register(Cell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "example_bottom")
+        collectionView!.register(Cell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "example_top")
+        collectionView!.register(Cell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "example_bottom")
 
         (self.collectionView?.collectionViewLayout as? CardStackCollectionViewLayout)?.delegate = self
     }
@@ -61,12 +61,12 @@ class ExampleCollectionViewController: UICollectionViewController, CardStackLayo
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        if kind == UICollectionElementKindSectionFooter {
-            let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "example_bottom", for: indexPath) as! Cell
+        if kind == UICollectionView.elementKindSectionFooter {
+            let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "example_bottom", for: indexPath) as! Cell
             view.backgroundColor = UIColor.green
             return view
         } else {
-            let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "example_top", for: indexPath) as! Cell
+            let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "example_top", for: indexPath) as! Cell
             view.backgroundColor = UIColor.red
             return view
         }
