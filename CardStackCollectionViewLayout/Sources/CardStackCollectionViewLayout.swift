@@ -127,8 +127,14 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
         }
 
         // CELLS
-        let kFractionToMove: CGFloat = 0.0 // future dragging translation
-        contentHeight = CGFloat(kFractionToMove)
+        var initialOffset: CGFloat = 0
+        if let delegate = self.delegate,
+            let collection = self.collectionView,
+            let headerOffset = delegate.collectionView?(collection, layout: self, referenceSizeForHeaderInSection: 0) {
+            initialOffset = headerOffset.height
+        }
+        // future dragging translation
+        contentHeight = CGFloat(initialOffset)
         cachedAttributes.removeAll()
 
         let sectionCount = collection.numberOfSections
@@ -142,7 +148,7 @@ open class CardStackCollectionViewLayout: UICollectionViewLayout {
                 let layout = UICollectionViewLayoutAttributes(forCellWith: IndexPath(row: row, section: section))
                 layout.frame = frameFor(index: IndexPath(row: row, section: section),
                                         cardState: state,
-                                        translation: kFractionToMove)
+                                        translation: 0)
                 
                 // content height might be based on a render height not 'visual height' since we're stacking
                 let isLast = row == (qty - 1)
